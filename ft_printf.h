@@ -17,5 +17,7 @@
 
 int	ft_printf(const char *str, ...);
 int	conversions(const char *str, va_list p);
+int	ft_putdigit(long long int n, int base, char	*bstr);
+int	ft_putstr(char *s);
 
 #endif
