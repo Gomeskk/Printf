@@ -12,9 +12,26 @@
 
 #include "ft_printf.h"
 
-int ft_printf(const char *, ...)
+int ft_printf(const char *str, ...)
 {
+	int	retn;
+	va_list i;
 
+	retn = 0;
+	va_start(i, str);
+	while (*str)
+	{
+		if (*str == '%')
+		{
+			str++;
+			retn += conversions(&*str, i);
+		}
+		else
+			retn += write(1, &*str, 1);
+		str++;
+	}
+	va_end(i);
+	return(retn);
 }
 
 int	conversions(const char *str, va_list p)
@@ -46,18 +63,33 @@ int	conversions(const char *str, va_list p)
 	return (retn);
 }
 
+int	ft_putstr(char *s)
+{
+	int	retn;
+
+	retn = 0;
+	if (s == 0)
+		return (write(1, "(null)", 6));
+	while (*s)
+	{
+		retn += write(1, &*s, 1);
+		s++;
+	}
+	return (retn);
+}
+
 int	ft_putdigit(long long int n, int base, char	*bstr)
 {
-	int		ret;
+	int		retn;
 
-	ret = 0;
+	retn = 0;
 	if (n < 0 && base == 10)
 	{
-		ret += write(1, "-", 1);
+		retn += write(1, "-", 1);
 		n *= -1;
 	}
 	if (n >= base)
-		ret += ft_putdigit(n / base, base, bstr);
-	ret += write(1, &bstr[n % base], 1);
-	return (ret);
+		retn += ft_putdigit(n / base, base, bstr);
+	retn += write(1, &bstr[n % base], 1);
+	return (retn);
 }
