@@ -12,33 +12,52 @@
 
 #include "ft_printf.h"
 
-int ft_printf(const char *, ...);
+int ft_printf(const char *, ...)
+{
+
+}
 
 int	conversions(const char *str, va_list p)
 {
-	int	ret;
-	int	c;
+	int	retn;
+	int	i;
 
-	ret = 0;
-	c = 0;
+	retn = 0;
+	i = 0;
 	if (*str == 'c')
 	{
-		c = va_arg(p, int);
-		ret += write(1, &c, 1);
+		i = va_arg(p, int);
+		retn += write(1, &i, 1);
 	}
 	else if (*str == 's')
-		ret += ft_putstr(va_arg(p, char *));
+		retn += ft_putstr(va_arg(p, char *));
 	else if (*str == 'd' || *str == 'i')
-		ret += ft_putdigit(va_arg(p, int), 10, DECIMAL);
+		retn += ft_putdigit(va_arg(p, int), 10, DECIMAL);
 	else if (*str == 'u')
-		ret += ft_putdigit(va_arg(p, unsigned int), 10, DECIMAL);
+		retn += ft_putdigit(va_arg(p, unsigned int), 10, DECIMAL);
 	else if (*str == 'x')
-		ret += ft_putdigit(va_arg(p, unsigned int), 16, HEXA);
+		retn += ft_putdigit(va_arg(p, unsigned int), 16, HEXA);
 	else if (*str == 'X')
-		ret += ft_putdigit(va_arg(p, unsigned int), 16, HEXA2);
+		retn += ft_putdigit(va_arg(p, unsigned int), 16, HEXA2);
 	else if (*str == 'p')
-		ret += ft_putpointer(va_arg(p, unsigned long int), 1, HEXA);
+		retn += ft_putpointer(va_arg(p, unsigned long int), 1, HEXA);
 	else if (*str == '%')
-		ret += write(1, "%%", 1);
+		retn += write(1, "%%", 1);
+	return (retn);
+}
+
+int	ft_putdigit(long long int n, int base, char	*bstr)
+{
+	int		ret;
+
+	ret = 0;
+	if (n < 0 && base == 10)
+	{
+		ret += write(1, "-", 1);
+		n *= -1;
+	}
+	if (n >= base)
+		ret += ft_putdigit(n / base, base, bstr);
+	ret += write(1, &bstr[n % base], 1);
 	return (ret);
 }
