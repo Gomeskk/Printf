@@ -93,3 +93,19 @@ int	ft_putdigit(long long int n, int base, char	*bstr)
 	retn += write(1, &bstr[n % base], 1);
 	return (retn);
 }
+
+int	ft_putpointer(unsigned long int n, int flag, char	*basestr)
+{
+	int		retn;
+
+	retn = 0;
+	if (n == 0)
+		return (write(1, "(nil)", 5));
+	if (flag == 1)
+		retn += write(1, "0x", 2);
+	if (n >= 16)
+		retn += ft_putpointer(n / 16, 0, basestr);
+	retn += write(1, &basestr[n % 16], 1);
+	return (retn);
+}
+
