@@ -17,6 +17,8 @@ int ft_printf(const char *str, ...)
 	int	retn;
 	va_list i;
 
+	if(!str)
+		return (-1);
 	retn = 0;
 	va_start(i, str);
 	while (*str)
