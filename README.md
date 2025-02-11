@@ -70,11 +70,15 @@ The goal of ft_printf is to create a function that mimics the behavior of printf
 
 To compile the project, use:
 
-```cc -Wall -Wextra -Werror ft_printf.c ft_printf_utils.c -o ft_printf```
+```
+cc -Wall -Wextra -Werror ft_printf.c ft_printf_utils.c -o ft_printf
+```
 
 To test the function:
 
-```./ft_printf "Hello %s! Your score is %d." "User" 42```
+```
+./ft_printf "Hello %s! Your score is %d." "User" 42
+```
 
 ## Common Pitfalls
 
