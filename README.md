@@ -10,7 +10,7 @@ The goal of ft_printf is to create a function that mimics the behavior of printf
 
 ## Mandatory Requirements
 
-**Function Prototype**
+### Function Prototype
 
 ```int ft_printf(const char *format, ...);```
 
@@ -30,7 +30,7 @@ The goal of ft_printf is to create a function that mimics the behavior of printf
 
   - ```%%``` -> Print a percent sign
 
-**Constraints**
+### Constraints
 
   - The function must use ```write``` for output instead of standard ```printf``` functions.
 
@@ -48,19 +48,19 @@ The goal of ft_printf is to create a function that mimics the behavior of printf
 
 ## Implementation Details
 
-**Variadic Arguments**
+### Variadic Arguments
 
   - The function uses ```stdarg.h``` to handle a variable number of arguments.
 
   - The ```va_list``` type is used to iterate through arguments dynamically.
 
-**Buffer Management**
+### Buffer Management
 
   - Properly handling formatted output to ensure efficiency and correctness.
 
   - Avoiding unnecessary memory allocations to optimize performance.
 
-**Conversion Specifiers**
+### Conversion Specifiers
 
   - Implementing each specifier separately while maintaining modularity.
 
@@ -70,13 +70,13 @@ The goal of ft_printf is to create a function that mimics the behavior of printf
 
 To compile the project, use:
 
-```
+```console
 cc -Wall -Wextra -Werror ft_printf.c ft_printf_utils.c -o ft_printf
 ```
 
 To test the function:
 
-```
+```console
 ./ft_printf "Hello %s! Your score is %d." "User" 42
 ```
 
@@ -93,8 +93,5 @@ To test the function:
 ## Conclusion
 
 The ft_printf project is a crucial step in mastering formatted output and variadic functions in C. Successfully implementing it improves problem-solving skills and deepens understanding of low-level formatting operations.
-Buffer overflow due to improper string manipulation.
-Not managing va_list correctly leading to segmentation faults.
-Conclusion
-The ft_printf project is a crucial step in mastering formatted output and variadic functions in C. Successfully implementing it improves problem-solving skills and deepens understanding of low-level formatting operations.
+
 
