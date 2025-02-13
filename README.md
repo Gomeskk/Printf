@@ -82,13 +82,13 @@ To test the function:
 
 ## Common Pitfalls
 
-  - Not handling ```NULL``` cases properly for pointers and strings.
+  - $\color{crimson}{\textbf{Not handling}}$ ```NULL``` cases properly for pointers and strings.
 
-  - Incorrect formatting when dealing with unsigned integers.
+  - $\color{crimson}{\textbf{Incorrect formatting}}$ when dealing with unsigned integers.
 
-  - Buffer overflow due to improper string manipulation.
+  - $\color{crimson}{\textbf{Buffer overflow}}$ due to improper string manipulation.
 
-  - Not managing ```va_list``` correctly leading to segmentation faults.
+  - $\color{crimson}{\textbf{Not managing}}$ ```va_list``` correctly leading to segmentation faults.
 
 ## Conclusion
 
